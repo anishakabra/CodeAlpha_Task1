@@ -1,14 +1,13 @@
 import tkinter as tk
 import random
 
-# --- Game Setup ---
+# Game 
 words = ["apple", "banana", "grape", "mango", "peach"]
 word = random.choice(words)
 guessed_letters = set()
 incorrect_guesses = 0
 max_guesses = 6
 
-# --- GUI Functions ---
 def get_display_word():
     return ' '.join([letter if letter in guessed_letters else '_' for letter in word])
 
@@ -48,7 +47,6 @@ def update_display():
     word_label.config(text=get_display_word())
     guesses_label.config(text=f"Incorrect: {incorrect_guesses} / {max_guesses}")
 
-# --- Drawing Hangman ---
 def draw_hangman(stage):
     if stage == 1:  # Head
         canvas.create_oval(70, 50, 110, 90, width=2)
@@ -63,7 +61,6 @@ def draw_hangman(stage):
     elif stage == 6:  # Right leg
         canvas.create_line(90, 150, 120, 190, width=2)
 
-# --- GUI Layout ---
 root = tk.Tk()
 root.title("Hangman Game with Drawing")
 root.geometry("500x400")
@@ -83,14 +80,12 @@ guesses_label.pack()
 result_label = tk.Label(root, text="", font=("Helvetica", 14), fg="blue")
 result_label.pack(pady=10)
 
-# --- Hangman Drawing Canvas ---
 canvas = tk.Canvas(root, width=200, height=250, bg="white")
 canvas.pack(pady=10)
 
-# Hangman base and gallows
-canvas.create_line(20, 230, 180, 230, width=2)  # Base
-canvas.create_line(50, 230, 50, 30, width=2)    # Vertical post
-canvas.create_line(50, 30, 90, 30, width=2)     # Top bar
-canvas.create_line(90, 30, 90, 50, width=2)     # Rope
+canvas.create_line(20, 230, 180, 230, width=2) 
+canvas.create_line(50, 230, 50, 30, width=2)    
+canvas.create_line(50, 30, 90, 30, width=2)     
+canvas.create_line(90, 30, 90, 50, width=2)     
 
 root.mainloop()
